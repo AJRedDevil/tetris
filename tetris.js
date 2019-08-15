@@ -25,4 +25,4 @@ const player = {
   matrix: matrix,
 };
 
-drawMatrix(matrix, {x: 5, y: 5});
+drawMatrix(player.matrix, player.pos);
