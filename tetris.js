@@ -120,14 +120,24 @@ function playerReset() {
 }
 
 function playerRotate(dir) {
+  // Store players X position before rotation.
   const pos = player.pos.x;
+  // Assign an offset to use for later.
   let offset = 1;
+  // Perform the actual matrix rotation.
   rotate(player.matrix, dir);
+
+  // If there is a collision immediately afer rotate, the rotation was illegal.
+  // But we allow rotation if the piece can fit when moved out from wall.
   while (collide(arena, player)) {
     player.pos.x += offset;
+    // Produces 1, -2, 3, -4, 5 etc.
     offset = -(offset + (offset > 0 ? 1 : -1));
+    // If we have tried to offset more than the piece width, we deem the rotation unsuccessful
     if (offset > player.matrix[0].length) {
+      // Reset rotation
       rotate(player.matrix, -dir);
+      // Reset position
       player.pos.x = pos;
       return;
     }
