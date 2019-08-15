@@ -5,6 +5,14 @@ context.scale(20, 20);
 
 const matrix = [[0, 0, 0], [1, 1, 1], [0, 1, 0]];
 
+function createMatrix(w, h) {
+  const matrix = [];
+  while (h--) {
+    matrix.push(new Array(w).fill(0));
+  }
+  return matrix;
+}
+
 function draw() {
   context.fillStyle = '#000';
   context.fillRect(0, 0, canvas.width, canvas.height);
