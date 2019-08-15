@@ -53,8 +53,6 @@ function update(time = 0) {
 }
 
 const arena = createMatrix(12, 20);
-console.log(arena);
-console.table(arena);
 
 const player = {
   pos: {x: 5, y: 5},
