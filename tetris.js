@@ -23,6 +23,11 @@ function drawMatrix(matrix, offset) {
   });
 }
 
+function playerDrop() {
+  player.pos.y++;
+  dropCounter = 0;
+}
+
 let dropCounter = 0;
 let dropInterval = 1000;
 
@@ -33,8 +38,7 @@ function update(time = 0) {
 
   dropCounter += deltaTime;
   if (dropCounter > dropInterval) {
-    player.pos.y++;
-    dropCounter = 0;
+    playerDrop();
   }
   draw();
   requestAnimationFrame(update);
@@ -54,8 +58,7 @@ document.addEventListener('keydown', event => {
       player.pos.x++;
       break;
     case 40:
-      player.pos.y++;
-      dropCounter = 0;
+      playerDrop();
       break;
     default:
       break;
