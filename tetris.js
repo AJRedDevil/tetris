@@ -91,6 +91,8 @@ function playerMove(dir) {
 }
 
 function playerReset() {
+  const pieces = 'ILJOSTZ';
+  player.matrix = createPiece(pieces[(pieces.length * Math.random()) | 0]);
   player.pos.y = 0;
   player.pos.x =
     ((arena[0].length / 2) | 0) - ((player.matrix[0].length / 2) | 0);
@@ -144,7 +146,7 @@ const arena = createMatrix(12, 20);
 
 const player = {
   pos: {x: 5, y: 5},
-  matrix: createPiece('T'),
+  matrix: null,
 };
 
 document.addEventListener('keydown', event => {
