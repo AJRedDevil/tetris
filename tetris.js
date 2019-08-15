@@ -16,7 +16,6 @@ function drawMatrix(matrix, offset) {
   matrix.forEach((row, y) => {
     row.forEach((value, x) => {
       if (value !== 0) {
-        console.log(x, y);
         context.fillStyle = 'red';
         context.fillRect(x + offset.x, y + offset.y, 1, 1);
       }
@@ -24,8 +23,11 @@ function drawMatrix(matrix, offset) {
   });
 }
 
+let lastTime = 0;
 function update(time = 0) {
-  console.log(time);
+  const deltaTime = time - lastTime;
+  lastTime = time;
+  console.log(deltaTime);
   draw();
   requestAnimationFrame(update);
 }
