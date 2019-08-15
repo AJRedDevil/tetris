@@ -46,10 +46,19 @@ const player = {
 };
 
 document.addEventListener('keydown', event => {
-  if (event.keyCode === 37) {
-    player.pos.x--;
-  } else if (event.keyCode === 39) {
-    player.pos.x++;
+  switch (event.keyCode) {
+    case 37:
+      player.pos.x--;
+      break;
+    case 39:
+      player.pos.x++;
+      break;
+    case 40:
+      player.pos.y++;
+      dropCounter = 0;
+      break;
+    default:
+      break;
   }
 });
 
